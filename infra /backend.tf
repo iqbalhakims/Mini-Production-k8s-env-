@@ -7,7 +7,7 @@ terraform {
   }
 
   cloud {
-    organization = "iqbalhakims"
+    organization = "iqbal-hakim"
 
     workspaces {
       name = "Mini-Production-k8s-env-"
