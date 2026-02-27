@@ -69,7 +69,7 @@ resource "aws_instance" "controlplane" {
     instance_type          = var.instance_type
     subnet_id              = aws_subnet.k8s_subnet.id
     vpc_security_group_ids = [aws_security_group.k8s_sg.id]
-    #key_name = var.key_name
+    key_name = var.key_name
     user_data = file("userdata.sh")
 
     tags = {
@@ -84,7 +84,7 @@ resource "aws_instance" "workers" {
     instance_type          = var.instance_type
     subnet_id              = aws_subnet.k8s_subnet.id
     vpc_security_group_ids = [aws_security_group.k8s_sg.id]
-    #key_name = var.key_name
+    key_name = var.key_name
 
     tags = {
         Name = "k8s-worker-${count.index + 1}"
