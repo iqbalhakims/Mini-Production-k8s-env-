@@ -79,7 +79,7 @@ resource "aws_instance" "controlplane" {
 }
 resource "aws_key_pair" "deployer" {
   key_name   = "var.key_name_controlplane"
-  public_key = file("~/.ssh")
+  public_key = file("~/.ssh/id_rsa.pub")
 }
 
 resource "aws_instance" "workers" {
@@ -88,15 +88,11 @@ resource "aws_instance" "workers" {
     instance_type          = var.instance_type
     subnet_id              = aws_subnet.k8s_subnet.id
     vpc_security_group_ids = [aws_security_group.k8s_sg.id]
-    key_name = var.key_name_workers
+    key_name = var.key_name_controlplane
 
     tags = {
         Name = "k8s-worker-${count.index + 1}"
         Role = "worker"
     }
-}
 
-resource "aws_key_pair" "deployer1" {
-  key_name   = "var.key_name_workers"
-  public_key = file("~/.ssh")
 }
