@@ -77,6 +77,10 @@ resource "aws_instance" "controlplane" {
         Role = "controlplane"
     }
 }
+resource "aws_key_pair" "deployer" {
+  key_name   = "var.key_name_controlplane"
+  public_key = file("~/.ssh")
+}
 
 resource "aws_instance" "workers" {
     count                  = 2
@@ -90,4 +94,9 @@ resource "aws_instance" "workers" {
         Name = "k8s-worker-${count.index + 1}"
         Role = "worker"
     }
+}
+
+resource "aws_key_pair" "deployer1" {
+  key_name   = "var.key_name_workers"
+  public_key = "file("~/.ssh")
 }
