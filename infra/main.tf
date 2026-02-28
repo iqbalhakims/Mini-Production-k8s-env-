@@ -98,5 +98,5 @@ resource "aws_instance" "workers" {
 
 resource "aws_key_pair" "deployer1" {
   key_name   = "var.key_name_workers"
-  public_key = "file("~/.ssh")
+  public_key = file("~/.ssh")
 }
