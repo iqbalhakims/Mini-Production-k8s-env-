@@ -7,11 +7,11 @@ variable "instance_type" {
 }
 
 variable "key_name_controlplane" {
-  description = "controlplane-k8s-key"
+  default = "controlplane-k8s-key"
 }
 
 variable "key_name_workers" {
-  description = "controlplane-k8s-key"
+  default = "controlplane-k8s-key"
 }
 
 
