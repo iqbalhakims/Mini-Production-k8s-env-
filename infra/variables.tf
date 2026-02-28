@@ -7,7 +7,7 @@ variable "instance_type" {
 }
 
 variable "key_name_controlplane" {
-  default = "controlplane-k8s-key"
+  default = "id_ed25519.pub"
 }
 
 variable "ami" {
