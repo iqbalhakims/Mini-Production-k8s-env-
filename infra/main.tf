@@ -78,8 +78,8 @@ resource "aws_instance" "controlplane" {
     }
 }
 resource "aws_key_pair" "deployer" {
-  key_name   = "var.key_name_controlplane"
-  public_key = file("~/.ssh/id_rsa.pub")
+  key_name   = var.key_name_controlplane
+  public_key = file(pathexpand("~/.ssh/id_rsa.pub"))
 }
 
 resource "aws_instance" "workers" {
