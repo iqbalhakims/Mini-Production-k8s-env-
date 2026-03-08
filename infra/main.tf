@@ -1,3 +1,9 @@
+provider "helm" {
+  kubernetes {
+    config_path = "~/.kube/config"
+  }
+}
+
 ## vpc
 
 resource "aws_vpc" "k8s_vpc" {
