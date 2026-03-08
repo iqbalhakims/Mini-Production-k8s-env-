@@ -4,6 +4,16 @@ provider "helm" {
   }
 }
 
+resource "helm_release" "argocd" {
+  name = "argocd"
+
+  repository       = "https://argoproj.github.io/argo-helm"
+  chart            = "argo-cd"
+  namespace        = "argocd"
+  create_namespace = true
+  version          = "7.3.11"
+}
+
 ## vpc
 
 resource "aws_vpc" "k8s_vpc" {
